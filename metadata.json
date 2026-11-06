@@ -1,0 +1,8 @@
+{
+  "name": "HELLRIX — Premium Event & Ticketing Platform",
+  "description": "Brutalist, high-security event ticketing ecosystem with UPI/UTR verification, role-based admin/staff portals, and live QR check-in scanning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

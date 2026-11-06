@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-primary: #090909;
+    --bg-secondary: #111111;
+    --bg-card: #181818;
+    --border-color: #35302F;
+    --accent-primary: #C8102E;
+    --accent-secondary: #E31B36;
+    --accent-deep: #790D20;
+    --text-primary: #E5DED3;
+    --text-secondary: #A59D95;
+    --text-muted: #77716D;
+  }
+
+  body {
+    background-color: #090909;
+    color: #E5DED3;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-condensed {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-mono-editorial {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Subtle Film Grain Texture Overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(200, 16, 46, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-grid-brutalist {
+  background-image: linear-gradient(to right, rgba(53, 48, 47, 0.25) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(53, 48, 47, 0.25) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+::-webkit-scrollbar-thumb {
+  background: #35302F;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8102E;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Shimmer for Skeleton Loaders */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.skeleton-shimmer::after {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.8s infinite;
+  content: '';
+}
+
+/* Smooth Pop-Up & Scroll Animations */
+@keyframes popUpReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateY(-2px) scale(1.005);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    border-color: rgba(200, 16, 46, 0.4);
+    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.2);
+  }
+  50% {
+    border-color: rgba(200, 16, 46, 0.9);
+    box-shadow: 0 0 12px 2px rgba(200, 16, 46, 0.35);
+  }
+}
+
+.animate-pop-up {
+  animation: popUpReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pop-scale {
+  animation: popScale 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.glow-crimson {
+  animation: pulseBorder 2.5s infinite;
+}
+
+/* Scroll reveal trigger classes */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-item-delayed-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-item-delayed-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-item-delayed-3 {
+  transition-delay: 0.3s;
+}
